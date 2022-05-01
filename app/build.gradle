@@ -35,4 +35,6 @@ dependencies {
     implementation(Libs.ktx)
     implementation(Libs.appCompat)
     implementation(Libs.materialDesign)
+    implementation(Libs.constraintLayout)
+    implementation(Libs.lottieAnimations)
 }

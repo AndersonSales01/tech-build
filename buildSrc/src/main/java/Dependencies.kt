@@ -14,4 +14,5 @@ object Libs {
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     val ktx = "androidx.core:core-ktx:${Versions.ktx}"
     val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    val lottieAnimations = "com.airbnb.android:lottie:${Versions.lottie}"
 }

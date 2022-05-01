@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_password.xml" value="0.1828125" />
+        <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1828125" />
+        <entry key="app/src/main/res/drawable/shape_button_border_radius.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/drawable/shape_text_input_roudend.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
