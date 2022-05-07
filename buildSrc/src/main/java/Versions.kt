@@ -6,4 +6,5 @@ object Versions {
     const val constraintLayout = "1.1.3"
     const val ktx = "1.7.0"
     const val lottie = "5.0.3"
+    const val koin_version = "3.2.0-beta-1"
 }

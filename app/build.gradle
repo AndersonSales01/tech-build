@@ -37,4 +37,6 @@ dependencies {
     implementation(Libs.materialDesign)
     implementation(Libs.constraintLayout)
     implementation(Libs.lottieAnimations)
+    implementation(Libs.koinAndroid)
+
 }
