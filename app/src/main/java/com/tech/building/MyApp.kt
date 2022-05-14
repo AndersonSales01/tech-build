@@ -1,7 +1,9 @@
 package com.tech.building
 
 import android.app.Application
-import com.tech.building.features.login.di.loginModule
+import com.tech.building.domain.di.domainModule
+import com.tech.building.features.di.presentationModule
+import com.tech.building.gateway.di.gatewayModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,7 +17,11 @@ class MyApp : Application() {
             androidLogger()
             androidContext(this@MyApp)
 
-            modules(loginModule)
+            modules(
+                presentationModule,
+                domainModule,
+                gatewayModule
+            )
         }
     }
 }

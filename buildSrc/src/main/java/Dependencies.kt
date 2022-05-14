@@ -16,4 +16,6 @@ object Libs {
     val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     val lottieAnimations = "com.airbnb.android:lottie:${Versions.lottie}"
     val koinAndroid = "io.insert-koin:koin-android:${Versions.koin_version}"
+    val gson = "com.google.code.gson:gson:${Versions.gson}"
+
 }

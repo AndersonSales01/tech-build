@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -38,5 +39,5 @@ dependencies {
     implementation(Libs.constraintLayout)
     implementation(Libs.lottieAnimations)
     implementation(Libs.koinAndroid)
-
+    implementation(Libs.gson)
 }

@@ -5,4 +5,5 @@
     <string name="login_screen_text_input_user_hint">Usuário</string>
     <string name="login_screen_text_input_password_hint">Senha</string>
     <string name="login_screen_sing_in_button">Entrar</string>
+    <string name="login_screen_sing_in_error">Usuário ou Senha incorreta!!</string>
 </resources>

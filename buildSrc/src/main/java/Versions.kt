@@ -7,4 +7,6 @@ object Versions {
     const val ktx = "1.7.0"
     const val lottie = "5.0.3"
     const val koin_version = "3.2.0-beta-1"
+    const val gson = "2.8.5"
+
 }
