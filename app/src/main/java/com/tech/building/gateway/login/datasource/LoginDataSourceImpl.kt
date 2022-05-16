@@ -21,15 +21,26 @@ class LoginDataSourceImpl(
             name = "João Paulo",
             email = "teste@gmail.com",
             phone = "8888-88888",
-            userProfile = "admin"
+            userProfile = "ADMIN",
+            permissions = listOf("new_request","release_request")
         ),
         UserDTO(
             user = "teste2",
-            password = "1234",
+            password = "123456",
             name = "teste2",
             email = "teste1@gmail.com",
             phone = "9999-9999",
-            userProfile = "engineer"
+            userProfile = "ENGINEER",
+            permissions = listOf("new_request")
+        ),
+        UserDTO(
+            user = "teste3",
+            password = "123456",
+            name = "teste2",
+            email = "teste1@gmail.com",
+            phone = "9999-9999",
+            userProfile = "WAREHOUSE",
+            permissions = listOf("release_request")
         ),
     )
 

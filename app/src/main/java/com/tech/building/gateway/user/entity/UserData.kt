@@ -1,6 +1,6 @@
-package com.tech.building.gateway.login.entity
+package com.tech.building.gateway.user.entity
 
-data class UserDTO(
+data class UserData(
     val user: String,
     val password: String,
     val name: String,

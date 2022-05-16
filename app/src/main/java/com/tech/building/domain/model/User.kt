@@ -1,6 +1,6 @@
-package com.tech.building.gateway.login.entity
+package com.tech.building.domain.model
 
-data class UserDTO(
+data class User(
     val user: String,
     val password: String,
     val name: String,
@@ -9,3 +9,9 @@ data class UserDTO(
     val phone: String,
     val permissions: List<String>
 )
+
+enum class UserProfile(){
+    ADMIN,
+    ENGINEER,
+    WAREHOUSE
+}

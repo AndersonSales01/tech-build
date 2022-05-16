@@ -6,4 +6,11 @@
     <string name="login_screen_text_input_password_hint">Senha</string>
     <string name="login_screen_sing_in_button">Entrar</string>
     <string name="login_screen_sing_in_error">Usuário ou Senha incorreta!!</string>
+
+    <!-- Home Screen -->
+    <string name="home_screen_stock_category">Estoque</string>
+
+    <!-- Card Carousel Screen -->
+    <string name="card_carousel_new_request">Nova Requisição</string>
+    <string name="card_carousel_release_request">Liberar Requisição</string>
 </resources>

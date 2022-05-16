@@ -1,13 +1,11 @@
 package com.tech.building.features.login.view
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import com.tech.building.R
+import com.tech.building.features.home.HomeActivity
 import com.tech.building.features.login.viewmodel.LoginUiAction
 import com.tech.building.features.login.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
@@ -17,8 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     private val viewModel: LoginViewModel by viewModel()
-    var coordinatorLayout: CoordinatorLayout? = null
-    val view: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +71,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     }
 
     private fun navigateToHome() {
-        //TODO: Chamar tela da home
+        startActivity(HomeActivity.newIntent(this))
+        finish()
     }
 }

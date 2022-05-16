@@ -1,4 +1,4 @@
-package com.tech.building.domain.usecase
+package com.tech.building.domain.usecase.login
 
 import com.tech.building.domain.repository.LoginRepository
 import kotlinx.coroutines.flow.Flow
