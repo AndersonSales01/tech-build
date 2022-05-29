@@ -13,4 +13,9 @@
     <!-- Card Carousel Screen -->
     <string name="card_carousel_new_request">Nova Requisição</string>
     <string name="card_carousel_release_request">Liberar Requisição</string>
+
+    <!-- New Request -->
+    <string name="new_request_screen_toolbar_tile">Nova Requisição</string>
+    <string name="new_request_screen_collaborator_label">Colaborador</string>
+    <string name="new_request_screen_material_label">Materiais</string>
 </resources>

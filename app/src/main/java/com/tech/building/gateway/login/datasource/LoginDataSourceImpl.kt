@@ -3,6 +3,7 @@ package com.tech.building.gateway.login.datasource
 import android.content.SharedPreferences
 import android.util.Log
 import com.google.gson.Gson
+import com.tech.building.gateway.MocksData
 import com.tech.building.gateway.login.entity.UserDTO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -14,45 +15,14 @@ class LoginDataSourceImpl(
     private val gson: Gson
 ) : LoginDataSource {
 
-    private val userList: List<UserDTO> = listOf(
-        UserDTO(
-            user = "teste1",
-            password = "123456",
-            name = "João Paulo",
-            email = "teste@gmail.com",
-            phone = "8888-88888",
-            userProfile = "ADMIN",
-            permissions = listOf("new_request","release_request")
-        ),
-        UserDTO(
-            user = "teste2",
-            password = "123456",
-            name = "teste2",
-            email = "teste1@gmail.com",
-            phone = "9999-9999",
-            userProfile = "ENGINEER",
-            permissions = listOf("new_request")
-        ),
-        UserDTO(
-            user = "teste3",
-            password = "123456",
-            name = "teste2",
-            email = "teste1@gmail.com",
-            phone = "9999-9999",
-            userProfile = "WAREHOUSE",
-            permissions = listOf("release_request")
-        ),
-    )
-
     override fun login(user: String, password: String): Flow<Boolean> {
         return flow {
             emit(checkUserValid(user = user, password = password))
         }
     }
 
-
     private fun checkUserValid(user: String, password: String): Boolean {
-        val user = userList.find { it.user == user && it.password == password }
+        val user = MocksData.mockListLogin().find { it.user == user && it.password == password }
         if (user != null) {
             saveUser(user)
             return true
@@ -60,10 +30,8 @@ class LoginDataSourceImpl(
         return false
     }
 
-
     private fun saveUser(userDTO: UserDTO) {
         sharedPreferences.edit().putString(USER_DATA, toUserSession(userDTO)).apply()
-        Log.d("testeShared", "value " + sharedPreferences.getString(USER_DATA,""))
     }
 
     private fun toUserSession(userDTO: UserDTO): String {

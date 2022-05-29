@@ -9,6 +9,7 @@ import com.tech.building.R
 import com.tech.building.domain.model.CardCarouselModel
 import com.tech.building.features.cardcarousel.viewmodel.CardCarouselUiAction
 import com.tech.building.features.cardcarousel.viewmodel.CardCarouselViewModel
+import com.tech.building.features.newrequest.view.NewRequestActivity
 import kotlinx.android.synthetic.main.fragment_card_carousel.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,7 +48,7 @@ class CardCarouselFragment : Fragment(R.layout.fragment_card_carousel) {
     }
 
     private fun navigateToNewRequestScreen() {
-        //TODO: Falta fazer chamada da tela de nova requisição.
+        startActivity(NewRequestActivity.newIntent(requireContext()))
     }
 
     private fun navigateToReleaseRequestScreen() {

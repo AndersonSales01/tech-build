@@ -2,8 +2,13 @@ package com.tech.building.gateway.di
 
 import android.content.Context
 import com.google.gson.Gson
+import com.tech.building.domain.repository.CollaboratorRepository
 import com.tech.building.domain.repository.LoginRepository
 import com.tech.building.domain.repository.UserRepository
+import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSource
+import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSourceImpl
+import com.tech.building.gateway.collaborator.mapper.ListCollaboratorDtoToListCollaboratorModelMapper
+import com.tech.building.gateway.collaborator.repository.CollaboratorRepositoryImpl
 import com.tech.building.gateway.login.datasource.LoginDataSource
 import com.tech.building.gateway.login.datasource.LoginDataSourceImpl
 import com.tech.building.gateway.login.repository.LoginRepositoryImpl
@@ -27,6 +32,12 @@ val gatewayModule = module {
         )
     }
 
+    factory<CollaboratorRepository> {
+        CollaboratorRepositoryImpl(
+            dataSource = get()
+        )
+    }
+
     // DataSources
     factory<LoginDataSource> {
         LoginDataSourceImpl(
@@ -44,6 +55,12 @@ val gatewayModule = module {
                 USER_DATA,
                 Context.MODE_PRIVATE
             )
+        )
+    }
+
+    factory<CollaboratorDataSource> {
+        CollaboratorDataSourceImpl(
+            mapper = ListCollaboratorDtoToListCollaboratorModelMapper()
         )
     }
 }
