@@ -3,6 +3,7 @@ package com.tech.building.domain.di
 import com.tech.building.domain.usecase.cardcarousel.GetCardsCarouselHasPermissionUseCase
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import com.tech.building.domain.usecase.login.LoginUseCase
+import com.tech.building.domain.usecase.material.GetMaterialsUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -19,6 +20,12 @@ val domainModule = module {
 
     factory {
         GetCollaboratorsUseCase(
+            repository = get()
+        )
+    }
+
+    factory {
+        GetMaterialsUseCase(
             repository = get()
         )
     }

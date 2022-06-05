@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1828125" />
         <entry key="app/src/main/res/drawable/shape_button_border_radius.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/drawable/shape_text_input_roudend.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_add_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />

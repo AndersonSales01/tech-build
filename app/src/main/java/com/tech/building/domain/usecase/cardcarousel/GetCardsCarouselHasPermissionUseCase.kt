@@ -35,7 +35,6 @@ class GetCardsCarouselHasPermissionUseCase(
                 R.raw.registra,
                 CarouselCardsType.NEW_REQUEST
             )
-
         )
         cardsCarousel.add(
             CardCarouselModel(

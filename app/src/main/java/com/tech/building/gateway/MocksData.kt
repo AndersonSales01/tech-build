@@ -2,6 +2,7 @@ package com.tech.building.gateway
 
 import com.tech.building.gateway.collaborator.entity.CollaboratorDTO
 import com.tech.building.gateway.login.entity.UserDTO
+import com.tech.building.gateway.material.entity.MaterialDTO
 
 object MocksData {
 
@@ -41,5 +42,12 @@ object MocksData {
                 userProfile = "WAREHOUSE",
                 permissions = listOf("release_request")
             ),
+        )
+
+    fun mockListMaterials(): List<MaterialDTO> =
+        listOf(
+            MaterialDTO("Cimento CP", "1111", listOf("UNiD")),
+            MaterialDTO("Manta impermeabilizante ", "2222", listOf("RL", "M")),
+            MaterialDTO("Prego", "333", listOf("KG", "UUNID")),
         )
 }

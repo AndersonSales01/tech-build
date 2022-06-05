@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.tech.building.domain.repository.CollaboratorRepository
 import com.tech.building.domain.repository.LoginRepository
+import com.tech.building.domain.repository.MaterialRepository
 import com.tech.building.domain.repository.UserRepository
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSource
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSourceImpl
@@ -12,6 +13,10 @@ import com.tech.building.gateway.collaborator.repository.CollaboratorRepositoryI
 import com.tech.building.gateway.login.datasource.LoginDataSource
 import com.tech.building.gateway.login.datasource.LoginDataSourceImpl
 import com.tech.building.gateway.login.repository.LoginRepositoryImpl
+import com.tech.building.gateway.material.datasource.MaterialDataSource
+import com.tech.building.gateway.material.datasource.MaterialDataSourceImpl
+import com.tech.building.gateway.material.mapper.MaterialsDtoToMaterialsModelMapper
+import com.tech.building.gateway.material.repository.MaterialRepositoryImpl
 import com.tech.building.gateway.user.datasource.UserDataSource
 import com.tech.building.gateway.user.datasource.UserDataSourceImpl
 import com.tech.building.gateway.user.repository.UserRepositoryImpl
@@ -34,6 +39,12 @@ val gatewayModule = module {
 
     factory<CollaboratorRepository> {
         CollaboratorRepositoryImpl(
+            dataSource = get()
+        )
+    }
+
+    factory<MaterialRepository> {
+        MaterialRepositoryImpl(
             dataSource = get()
         )
     }
@@ -61,6 +72,12 @@ val gatewayModule = module {
     factory<CollaboratorDataSource> {
         CollaboratorDataSourceImpl(
             mapper = ListCollaboratorDtoToListCollaboratorModelMapper()
+        )
+    }
+
+    factory<MaterialDataSource> {
+        MaterialDataSourceImpl(
+            mapper = MaterialsDtoToMaterialsModelMapper()
         )
     }
 }

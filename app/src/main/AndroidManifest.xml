@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Techbuilding">
         <activity
+            android:name=".features.additem.view.AddItemActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".features.newrequest.view.NewRequestActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
