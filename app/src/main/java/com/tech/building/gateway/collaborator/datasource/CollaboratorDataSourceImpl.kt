@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.flow
 
 class CollaboratorDataSourceImpl(
     private val mapper: ListCollaboratorDtoToListCollaboratorModelMapper
+
 ) : CollaboratorDataSource {
     override fun getCollaborators(): Flow<List<CollaboratorModel>> {
         val list = MocksData.mockListCollaborators()

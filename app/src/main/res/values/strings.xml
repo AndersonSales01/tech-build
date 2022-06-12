@@ -30,4 +30,8 @@
     <string name="add_item_message_error_unit_selector">Você precisa selecionar uma unidade de medida!!</string>
     <string name="add_item_message_error_qtd_requested">Você precisa informar quantidade solicitada!!</string>
     <string name="add_item_message_error_material_selector">Você precisa selecionar um material!!</string>
+
+    <!-- Item Added -->
+    <string name="item_added_qtd_label">QTD:</string>
+    <string name="item_added_unit_label">UND:</string>
 </resources>

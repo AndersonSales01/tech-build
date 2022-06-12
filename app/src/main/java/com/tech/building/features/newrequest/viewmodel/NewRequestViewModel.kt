@@ -1,10 +1,12 @@
 package com.tech.building.features.newrequest.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tech.building.domain.model.CollaboratorModel
+import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +20,7 @@ class NewRequestViewModel(
 
     private val stateMutableLiveData: MutableLiveData<NewRequestUiState> = MutableLiveData()
     val stateLiveData: LiveData<NewRequestUiState> = stateMutableLiveData
+    private var items = mutableListOf<ItemRequestModel>()
 
     fun getCollaborators() {
         viewModelScope.launch {
@@ -40,5 +43,12 @@ class NewRequestViewModel(
 
     private fun getCollaboratorsHandleError() {
 
+    }
+
+    fun addItem(item: ItemRequestModel?) {
+        item?.let {
+            items.add(item)
+        }
+        stateMutableLiveData.value = NewRequestUiState(items = items)
     }
 }

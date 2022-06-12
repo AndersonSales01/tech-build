@@ -20,6 +20,7 @@ private const val ITEM_ADDED_KEY = "itemAdded"
 class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
 
     private val viewModel: NewRequestViewModel by viewModel()
+    private val itemsAdapter = ItemsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
     ) { result ->
         if (result.resultCode == RESULT_CODE_ITEM_ADDED) {
             val item: ItemRequestModel? = result.data?.extras?.getParcelable(ITEM_ADDED_KEY)
-            Toast.makeText(this, item?.materialModel?.name, Toast.LENGTH_LONG).show()
+            viewModel.addItem(item)
         }
     }
 
@@ -57,6 +58,9 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
             when {
                 state.collaborators.isNotEmpty() -> {
                     setupSpinnerCollaborators(state.collaborators)
+                }
+                state.items.isNotEmpty() -> {
+                    setItemList(state.items)
                 }
             }
         }
@@ -75,6 +79,11 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
 
     private fun collaboratorSelected(collaborator: CollaboratorModel) {
         edtCollaborator.setText(collaborator.name)
+    }
+
+    private fun setItemList(items: List<ItemRequestModel>) {
+        itemsAdapter.submitList(items)
+        itemsRecyclerView.adapter = itemsAdapter
     }
 
     companion object {

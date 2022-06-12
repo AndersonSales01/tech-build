@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/margin_horizontal_views_screen">
+
+    <TextView
+        android:id="@+id/materialName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_views_screen"
+        android:maxLines="2"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Prego" />
+
+    <TextView
+        android:id="@+id/qtdLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_views_screen"
+        android:text="@string/item_added_qtd_label"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintLeft_toRightOf="@id/materialName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/qtdValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_views_screen"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintLeft_toRightOf="@id/qtdLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/unitLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_views_screen"
+        android:layout_marginTop="@dimen/margin_7"
+        android:text="@string/item_added_unit_label"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintLeft_toRightOf="@id/materialName"
+        app:layout_constraintTop_toBottomOf="@id/qtdLabel" />
+
+    <TextView
+        android:id="@+id/unitValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_horizontal_views_screen"
+        android:layout_marginTop="@dimen/margin_7"
+        android:textAppearance="?attr/textAppearanceSubtitle2"
+        app:layout_constraintLeft_toRightOf="@id/qtdLabel"
+        app:layout_constraintTop_toBottomOf="@id/qtdValue"
+        tools:text="KG" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
