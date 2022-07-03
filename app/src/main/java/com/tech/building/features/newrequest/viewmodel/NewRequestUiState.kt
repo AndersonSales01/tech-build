@@ -5,5 +5,6 @@ import com.tech.building.domain.model.ItemRequestModel
 
 data class NewRequestUiState(
     val collaborators: List<CollaboratorModel> = emptyList(),
-    val items: List<ItemRequestModel> = emptyList()
+    val items: List<ItemRequestModel> = emptyList(),
+    val isErrorItemAlreadyExists: Boolean = false
 )

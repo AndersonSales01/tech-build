@@ -7,9 +7,12 @@ import kotlinx.android.synthetic.main.layout_item_request_item.view.*
 
 class ItemListViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bindItem(item: ItemRequestModel) {
+    fun bindItem(item: ItemRequestModel, listenerItem: (ItemRequestModel) -> Unit) {
         view.materialName.text = item.materialModel.name
         view.qtdValue.text = item.qtdRequested.toString()
         view.unitValue.text = item.unit
+        view.setOnClickListener {
+            listenerItem(item)
+        }
     }
 }

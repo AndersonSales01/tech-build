@@ -4,6 +4,7 @@ import com.tech.building.features.additem.viewmodel.AddItemViewModel
 import com.tech.building.features.cardcarousel.viewmodel.CardCarouselViewModel
 import com.tech.building.features.login.viewmodel.LoginViewModel
 import com.tech.building.features.newrequest.viewmodel.NewRequestViewModel
+import com.tech.building.features.scanqrcodecollaborate.viewmodel.QrcodeScanCollaborateViewModel
 import com.tech.building.features.utils.provider.ResourceProvider
 import com.tech.building.features.utils.provider.ResourceProviderImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -39,6 +40,12 @@ val presentationModule = module {
         AddItemViewModel(
             getMaterialsUseCase = get(),
             resourceProvider = get()
+        )
+    }
+
+    viewModel {
+        QrcodeScanCollaborateViewModel(
+            checkCollaboratorValidUseCase = get()
         )
     }
 }

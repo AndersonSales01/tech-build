@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -40,4 +41,9 @@ dependencies {
     implementation(Libs.lottieAnimations)
     implementation(Libs.koinAndroid)
     implementation(Libs.gson)
+    implementation platform(Libs.firebase)
+    implementation(Libs.camera)
+    implementation(Libs.cameraLifeCycle)
+    implementation(Libs.cameraView)
+    implementation(Libs.mlKitVersion)
 }

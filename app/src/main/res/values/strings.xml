@@ -18,6 +18,7 @@
     <string name="new_request_screen_toolbar_tile">Nova Requisição</string>
     <string name="new_request_screen_collaborator_label">Colaborador</string>
     <string name="new_request_screen_material_label">Materiais</string>
+    <string name="new_request_screen_item_already_exists">O item já existe na lista!!</string>
 
     <!-- Add Item -->
     <string name="add_item_screen_toolbar_tile">Adicionar Material</string>
@@ -30,8 +31,13 @@
     <string name="add_item_message_error_unit_selector">Você precisa selecionar uma unidade de medida!!</string>
     <string name="add_item_message_error_qtd_requested">Você precisa informar quantidade solicitada!!</string>
     <string name="add_item_message_error_material_selector">Você precisa selecionar um material!!</string>
+    <string name="add_item_screen_edit_button">Editar</string>
+    <string name="add_item_screen_toolbar_tile_edit_item">Editar Material</string>
 
     <!-- Item Added -->
     <string name="item_added_qtd_label">QTD:</string>
     <string name="item_added_unit_label">UND:</string>
+
+    <!-- QrCode Scan Collaborate -->
+    <string name="qrcode_screen_scan_error_message">Não identificamos os dados do colaborador, gostaria de tentar novamente?</string>
 </resources>

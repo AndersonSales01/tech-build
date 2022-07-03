@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tech.building">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -10,6 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Techbuilding">
+        <activity
+            android:name=".features.scanqrcodecollaborate.view.QrcodeScanCollaborateActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".features.additem.view.AddItemActivity"
             android:exported="false"
@@ -25,7 +33,8 @@
         <activity
             android:name=".features.login.view.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,5 +8,8 @@ object Versions {
     const val lottie = "5.0.3"
     const val koin_version = "3.2.0-beta-1"
     const val gson = "2.8.5"
-
+    const val google_service = "4.3.10"
+    const val firebase = "30.1.0"
+    const val camerax_version = "1.2.0-alpha02"
+    const val mlKit_version = "16.1.3"
 }

@@ -8,6 +8,7 @@ import com.tech.building.R
 import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.MaterialModel
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
+import com.tech.building.features.additem.view.AddItemActivity
 import com.tech.building.features.utils.provider.ResourceProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,17 @@ class AddItemViewModel(
     private var isRequestQtdValid = false
     private var isMaterialSelectorValid = false
     private var isUnitMeasureValid = false
+    private var isEditItem = false
+
+    fun setItemForEdit(arg: AddItemActivity.Args?) {
+        arg?.let {
+            materialSelected(it.item.materialModel)
+            onSetUnitSelected(it.item.unit)
+            onDisableMaterialComponent()
+            onSetQtd(it.item.qtdRequested.toString())
+            isEditItem()
+        }
+    }
 
     fun getMaterials() {
         viewModelScope.launch {
@@ -54,8 +66,10 @@ class AddItemViewModel(
     fun materialSelected(material: MaterialModel) {
         materialSelected = material
         material?.let {
+            onSetValueMaterialSelector(material)
             onSetMaterialCode(material.code)
             onSetUnitsMeasure(material.unitMeasure)
+
         }
     }
 
@@ -69,6 +83,39 @@ class AddItemViewModel(
         if (unitsMeasure.isNotEmpty()) {
             stateMutableLiveData.value = AddItemUiState(unitsMeasure = unitsMeasure)
         }
+    }
+
+    private fun onSetValueMaterialSelector(material: MaterialModel) {
+        material?.let {
+            stateMutableLiveData.value = AddItemUiState(
+                setValueMaterialSelector = material.name,
+            )
+        }
+    }
+
+    private fun onSetUnitSelected(unitSelected: String) {
+        stateMutableLiveData.value = AddItemUiState(
+            setUnitSelected = unitSelected,
+        )
+    }
+
+    private fun onSetQtd(qtd: String) {
+        stateMutableLiveData.value = AddItemUiState(
+            setQtd = qtd,
+        )
+    }
+
+    private fun onDisableMaterialComponent() {
+        stateMutableLiveData.value = AddItemUiState(
+            enableMaterialComponent = false,
+        )
+    }
+
+    private fun isEditItem() {
+        isEditItem = true
+        stateMutableLiveData.value = AddItemUiState(
+            isEditItem = true,
+        )
     }
 
     fun saveItemButton(
@@ -92,10 +139,28 @@ class AddItemViewModel(
             val item = ItemRequestModel(
                 materialModel = materialSelected!!,
                 unit = unit,
-                qtdRequested = requestQtd.toDouble()
+                qtdRequested = requestQtd
             )
-            actionMutableLiveData.value = AddItemUiAction.ResultItemAdded(item)
+            actionMutableLiveData.value = AddItemUiAction.ResultItemAdded(
+                itemRequestModel = item,
+                resultKey = isEditResultKey(),
+                resultCode = resultCode()
+            )
         }
+    }
+
+    private fun isEditResultKey(): String {
+        if (isEditItem) {
+            return AddItemActivity.ITEM_EDIT_KEY
+        }
+        return AddItemActivity.ITEM_ADDED_KEY
+    }
+
+    private fun resultCode(): Int {
+        if (isEditItem) {
+            return AddItemActivity.RESULT_CODE_CHANGE_ITEM
+        }
+        return AddItemActivity.RESULT_CODE_ITEM_ADDED
     }
 
     private fun checkUnitSelectorComponent(unit: String) {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rootNewRequest"
     tools:context=".features.newrequest.view.NewRequestActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -74,7 +75,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView"
+                android:id="@+id/qrcodeScan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_horizontal_views_screen"
@@ -141,7 +142,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/sendRequestButton"
             style="@style/ButtonStyle"
             android:layout_marginHorizontal="@dimen/margin_horizontal_views_screen"
             android:layout_marginBottom="@dimen/margin_24"

@@ -8,5 +8,10 @@ data class AddItemUiState(
     val unitsMeasure: List<String> = emptyList(),
     val messageErrorRequestQtdComponent: String = "",
     val messageErrorSelectorMaterialComponent: String = "",
-    val messageErrorUnitSelectorComponent: String = ""
+    val messageErrorUnitSelectorComponent: String = "",
+    val setValueMaterialSelector: String = "",
+    val setUnitSelected: String = "",
+    val setQtd: String = "",
+    val enableMaterialComponent: Boolean = true,
+    val isEditItem: Boolean = false
 )

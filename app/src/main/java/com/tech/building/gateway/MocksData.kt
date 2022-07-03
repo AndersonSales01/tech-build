@@ -8,9 +8,9 @@ object MocksData {
 
     fun mockListCollaborators(): List<CollaboratorDTO> =
         listOf(
-            CollaboratorDTO("Anderson Carlos", 12, "11111111111"),
-            CollaboratorDTO("Antonio Carlos", 42, "222222"),
-            CollaboratorDTO("Halyson Ribeiro Pessoa", 15, "333333")
+            CollaboratorDTO("Anderson Carlos", 12, "11111111111","20000010"),
+            CollaboratorDTO("Antonio Carlos", 42, "222222","20000011"),
+            CollaboratorDTO("Halyson Ribeiro Pessoa", 15, "333333","20000012")
         )
 
     fun mockListLogin(): List<UserDTO> =

@@ -6,6 +6,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ItemRequestModel(
     var materialModel: MaterialModel,
-    var qtdRequested: Double,
+    var qtdRequested: Int,
     var unit: String
 ) : Parcelable

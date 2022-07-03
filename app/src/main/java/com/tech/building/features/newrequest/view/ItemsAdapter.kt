@@ -4,12 +4,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.tech.building.R
+import com.tech.building.domain.model.CardCarouselModel
 import com.tech.building.domain.model.ItemRequestModel
 
-class ItemsAdapter : ListAdapter<ItemRequestModel, ItemListViewHolder>(DiffUtil()) {
+class ItemsAdapter(
+    private val listenerItem: (ItemRequestModel) -> Unit,
+) : ListAdapter<ItemRequestModel, ItemListViewHolder>(DiffUtil()) {
 
     override fun onBindViewHolder(holder: ItemListViewHolder, position: Int) {
-        holder.bindItem(getItem(position))
+        holder.bindItem(getItem(position), listenerItem)
     }
 
     class DiffUtil : androidx.recyclerview.widget.DiffUtil.ItemCallback<ItemRequestModel>() {

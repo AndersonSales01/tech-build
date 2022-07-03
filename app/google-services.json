@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "253650538860",
+    "project_id": "tech-building",
+    "storage_bucket": "tech-building.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253650538860:android:dc436bec6b95cc7192a349",
+        "android_client_info": {
+          "package_name": "com.tech.building"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253650538860-sd8mb0rh6hetd10fgcol4csa72hiadlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_cx8EJHgy_UFaJVtZhirVPTUjP7Tuks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253650538860-sd8mb0rh6hetd10fgcol4csa72hiadlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

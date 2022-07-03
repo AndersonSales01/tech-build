@@ -12,7 +12,8 @@ class ListCollaboratorDtoToListCollaboratorModelMapper {
                 CollaboratorModel(
                     name = it.name,
                     age = it.age,
-                    cpf = it.cpf
+                    cpf = it.cpf,
+                    registration = it.registration
                 )
             )
         }

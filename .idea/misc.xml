@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.20677083333333332" />
         <entry key="../../../Library/Android/sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/drawable/ic_password.xml" value="0.1828125" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.1828125" />
@@ -13,10 +14,12 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16893115942028986" />
         <entry key="app/src/main/res/layout/activity_new_request.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_qrcode_scan_collaborate.xml" value="0.16614583333333333" />
         <entry key="app/src/main/res/layout/card_carousel_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/dialog_filter.xml" value="0.15" />
         <entry key="app/src/main/res/layout/dropdown_collaborate_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_card_carousel.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/item_options_bottom_sheet_content.xml" value="0.25271739130434784" />
         <entry key="app/src/main/res/layout/layout_item_request_item.xml" value="0.335" />
       </map>
     </option>
