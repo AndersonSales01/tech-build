@@ -10,6 +10,7 @@ import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.model.RequestStatus
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
+import com.tech.building.domain.usecase.request.SaveNewRequestUseCase
 import com.tech.building.features.additem.view.AddItemActivity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +20,7 @@ import kotlinx.coroutines.launch
 class NewRequestViewModel(
     private val getCollaboratorsUseCase: GetCollaboratorsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val saveNewRequestUseCase: SaveNewRequestUseCase,
 ) : ViewModel() {
 
     private val stateMutableLiveData: MutableLiveData<NewRequestUiState> = MutableLiveData()
@@ -107,6 +109,8 @@ class NewRequestViewModel(
                     status = RequestStatus.PENDING,
                     itemsRequest = items
                 )
+
+                saveNewRequest(requestModel)
                 Log.d("sendRequest", "Colaborador: " + requestModel.collaborator.name)
                 Log.d("sendRequest", "Status: " + requestModel.status.name)
                 Log.d("sendRequest", "Items: " + requestModel.itemsRequest.size)
@@ -138,5 +142,22 @@ class NewRequestViewModel(
 
     fun openAddItemScreen(args: AddItemActivity.Args? = null) {
         actionMutableLiveData.value = NewRequestUiAction.OpenAddItemScreen(args)
+    }
+
+    private fun saveNewRequest(requestModel: RequestModel) {
+        viewModelScope.launch {
+            saveNewRequestUseCase.invoke(requestModel)
+                .flowOn(dispatcher)
+                .onStart { }
+                .onCompletion {}
+                .collect {
+                    getCollaboratorsHandleSuccess()
+                }
+        }
+
+    }
+
+    private fun getCollaboratorsHandleSuccess() {
+        Log.d("saveNewRequest", "Sucess: ")
     }
 }

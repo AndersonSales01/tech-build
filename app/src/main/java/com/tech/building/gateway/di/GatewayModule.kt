@@ -2,10 +2,7 @@ package com.tech.building.gateway.di
 
 import android.content.Context
 import com.google.gson.Gson
-import com.tech.building.domain.repository.CollaboratorRepository
-import com.tech.building.domain.repository.LoginRepository
-import com.tech.building.domain.repository.MaterialRepository
-import com.tech.building.domain.repository.UserRepository
+import com.tech.building.domain.repository.*
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSource
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSourceImpl
 import com.tech.building.gateway.collaborator.mapper.ListCollaboratorDtoToListCollaboratorModelMapper
@@ -17,6 +14,10 @@ import com.tech.building.gateway.material.datasource.MaterialDataSource
 import com.tech.building.gateway.material.datasource.MaterialDataSourceImpl
 import com.tech.building.gateway.material.mapper.MaterialsDtoToMaterialsModelMapper
 import com.tech.building.gateway.material.repository.MaterialRepositoryImpl
+import com.tech.building.gateway.request.datasource.REQUEST_DATA
+import com.tech.building.gateway.request.datasource.RequestDataSource
+import com.tech.building.gateway.request.datasource.RequestDataSourceImpl
+import com.tech.building.gateway.request.repository.RequestRepositoryImpl
 import com.tech.building.gateway.user.datasource.UserDataSource
 import com.tech.building.gateway.user.datasource.UserDataSourceImpl
 import com.tech.building.gateway.user.repository.UserRepositoryImpl
@@ -45,6 +46,12 @@ val gatewayModule = module {
 
     factory<MaterialRepository> {
         MaterialRepositoryImpl(
+            dataSource = get()
+        )
+    }
+
+    factory<RequestRepository> {
+        RequestRepositoryImpl(
             dataSource = get()
         )
     }
@@ -78,6 +85,15 @@ val gatewayModule = module {
     factory<MaterialDataSource> {
         MaterialDataSourceImpl(
             mapper = MaterialsDtoToMaterialsModelMapper()
+        )
+    }
+
+    factory<RequestDataSource> {
+        RequestDataSourceImpl(
+            sharedPreferences = get<Context>().getSharedPreferences(
+                REQUEST_DATA,
+                Context.MODE_PRIVATE
+            )
         )
     }
 }

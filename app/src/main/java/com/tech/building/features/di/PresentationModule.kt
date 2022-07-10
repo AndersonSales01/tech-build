@@ -32,7 +32,8 @@ val presentationModule = module {
 
     viewModel {
         NewRequestViewModel(
-            getCollaboratorsUseCase = get()
+            getCollaboratorsUseCase = get(),
+            saveNewRequestUseCase = get()
         )
     }
 
