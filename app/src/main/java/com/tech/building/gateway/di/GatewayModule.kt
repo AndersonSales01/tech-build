@@ -17,6 +17,7 @@ import com.tech.building.gateway.material.repository.MaterialRepositoryImpl
 import com.tech.building.gateway.request.datasource.REQUEST_DATA
 import com.tech.building.gateway.request.datasource.RequestDataSource
 import com.tech.building.gateway.request.datasource.RequestDataSourceImpl
+import com.tech.building.gateway.request.mapper.ListRequestDtoToListRequestModelMapper
 import com.tech.building.gateway.request.repository.RequestRepositoryImpl
 import com.tech.building.gateway.user.datasource.UserDataSource
 import com.tech.building.gateway.user.datasource.UserDataSourceImpl
@@ -93,7 +94,9 @@ val gatewayModule = module {
             sharedPreferences = get<Context>().getSharedPreferences(
                 REQUEST_DATA,
                 Context.MODE_PRIVATE
-            )
+            ),
+            mapper = ListRequestDtoToListRequestModelMapper(),
+            gson = Gson()
         )
     }
 }

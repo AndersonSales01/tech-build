@@ -40,12 +40,12 @@ class NewRequestViewModel(
                 .onCompletion {}
                 .catch { getCollaboratorsHandleError() }
                 .collect {
-                    getCollaboratorsHandleSuccess(it)
+                    saveNewRequestHandleSuccess(it)
                 }
         }
     }
 
-    private fun getCollaboratorsHandleSuccess(collaborators: List<CollaboratorModel>) {
+    private fun saveNewRequestHandleSuccess(collaborators: List<CollaboratorModel>) {
         if (collaborators.isNotEmpty()) {
             stateMutableLiveData.value = NewRequestUiState(collaborators = collaborators)
         }
@@ -151,13 +151,14 @@ class NewRequestViewModel(
                 .onStart { }
                 .onCompletion {}
                 .collect {
-                    getCollaboratorsHandleSuccess()
+                    saveNewRequestHandleSuccess()
                 }
         }
 
     }
 
-    private fun getCollaboratorsHandleSuccess() {
+    private fun saveNewRequestHandleSuccess() {
+        actionMutableLiveData.value = NewRequestUiAction.SendRequestSuccess
         Log.d("saveNewRequest", "Sucess: ")
     }
 }

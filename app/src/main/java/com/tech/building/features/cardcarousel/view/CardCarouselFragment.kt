@@ -10,6 +10,7 @@ import com.tech.building.domain.model.CardCarouselModel
 import com.tech.building.features.cardcarousel.viewmodel.CardCarouselUiAction
 import com.tech.building.features.cardcarousel.viewmodel.CardCarouselViewModel
 import com.tech.building.features.newrequest.view.NewRequestActivity
+import com.tech.building.features.releaserequest.requestslist.view.RequestListActivity
 import kotlinx.android.synthetic.main.fragment_card_carousel.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -52,7 +53,7 @@ class CardCarouselFragment : Fragment(R.layout.fragment_card_carousel) {
     }
 
     private fun navigateToReleaseRequestScreen() {
-        //TODO: Falta fazer chamada da tela de liberação.
+        startActivity(RequestListActivity.newIntent(requireContext()))
     }
 
     private fun updateCardsList(cardsList: List<CardCarouselModel>) {

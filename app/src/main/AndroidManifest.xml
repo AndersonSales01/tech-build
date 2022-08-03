@@ -3,7 +3,9 @@
     package="com.tech.building">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -14,6 +16,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Techbuilding">
+        <activity
+            android:name=".features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.releaserequest.releaserequest.view.ReleaseRequestActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".features.releaserequest.requestslist.view.RequestListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".features.scanqrcodecollaborate.view.QrcodeScanCollaborateActivity"
             android:exported="false"
@@ -33,7 +47,8 @@
         <activity
             android:name=".features.login.view.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

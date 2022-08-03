@@ -120,6 +120,7 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
                     action.item
                 )
                 is NewRequestUiAction.OpenAddItemScreen -> openAddItemScreen(action.args)
+                is NewRequestUiAction.SendRequestSuccess -> finish()
             }
         }
     }

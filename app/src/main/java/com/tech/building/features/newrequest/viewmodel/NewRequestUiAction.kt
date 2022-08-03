@@ -11,4 +11,6 @@ sealed class NewRequestUiAction {
     data class OpenAddItemScreen(
         val args: AddItemActivity.Args? = null
     ) : NewRequestUiAction()
+
+    object SendRequestSuccess : NewRequestUiAction()
 }

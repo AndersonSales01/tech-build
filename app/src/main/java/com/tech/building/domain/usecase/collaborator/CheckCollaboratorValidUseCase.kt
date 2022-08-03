@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 
+// TODO: Mudar nome da classe para get collaborate
 class CheckCollaboratorValidUseCase(
     private val repository: CollaboratorRepository
 ) {

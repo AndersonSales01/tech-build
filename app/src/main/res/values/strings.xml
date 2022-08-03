@@ -37,7 +37,23 @@
     <!-- Item Added -->
     <string name="item_added_qtd_label">QTD:</string>
     <string name="item_added_unit_label">UND:</string>
+    <string name="item_added_qtd_attended_label">QTDA:</string>
 
     <!-- QrCode Scan Collaborate -->
     <string name="qrcode_screen_scan_error_message">Não identificamos os dados do colaborador, gostaria de tentar novamente?</string>
+
+    <!-- Request List -->
+    <string name="request_list_screen_toolbar_tile">Lista de Requisições</string>
+    <string name="request_list_screen_checkbox_pending">Pendente</string>
+    <string name="request_list_screen_checkbox_attended">Atendida</string>
+    <string name="request_list_screen_checkbox_all">Todos</string>
+
+    <!-- Release Request -->
+    <string name="release_request_screen_toolbar_tile">Liberar Requisição</string>
+
+    <!-- Release Material -->
+    <string name="release_material_screen_qtd_requested_label">Quantidade solicitada:</string>
+    <string name="release_material_screen_quantity_attended_label">Quantidade Atendida:</string>
+    <string name="release_material_screen_quantity_attended_hint">Quantidade Atendida</string>
+    <string name="release_material_screen_toolbar_tile">Material</string>
 </resources>

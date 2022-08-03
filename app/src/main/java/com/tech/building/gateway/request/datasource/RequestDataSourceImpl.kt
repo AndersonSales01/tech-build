@@ -2,17 +2,23 @@ package com.tech.building.gateway.request.datasource
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.google.gson.Gson
+import com.tech.building.domain.model.FilterRequestStatus
 import com.tech.building.domain.model.RequestModel
+import com.tech.building.domain.model.RequestStatus
 import com.tech.building.gateway.request.entity.RequestDTO
+import com.tech.building.gateway.request.mapper.ListRequestDtoToListRequestModelMapper
+import com.tech.building.gateway.util.convertJson
 import com.tech.building.gateway.util.fromJson
-import com.tech.building.gateway.util.toJson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
- const val REQUEST_DATA = "request_data"
+const val REQUEST_DATA = "request_data"
 
 class RequestDataSourceImpl(
     private val sharedPreferences: SharedPreferences,
+    private val mapper: ListRequestDtoToListRequestModelMapper,
+    private val gson: Gson
 ) : RequestDataSource {
     private var requests = mutableListOf<RequestDTO>()
 
@@ -20,6 +26,7 @@ class RequestDataSourceImpl(
         requests.clear()
         getDataRequestPersisted()
         val requestDTO = RequestDTO(
+            id = requests.size.inc(),
             collaborator = requestModel.collaborator,
             itemsRequest = requestModel.itemsRequest,
             status = requestModel.status.name
@@ -32,15 +39,37 @@ class RequestDataSourceImpl(
         }
     }
 
+    override fun getRequestsFiltered(
+        registrationCollaborator: String,
+        filter: FilterRequestStatus
+    ): Flow<List<RequestModel>> {
+        getDataRequestPersisted()
+        return flow {
+            if (requests.isNotEmpty()) {
+                emit(
+                    mapper.map(
+                        applyFilters(
+                            registrationCollaborator = registrationCollaborator,
+                            status = filter
+                        )
+                    )
+                )
+            }
+        }
+    }
+
     private fun persistNewRequest() {
         clear()
-        sharedPreferences.edit().putString(REQUEST_DATA, requests.toJson()).apply()
+        sharedPreferences.edit().putString(REQUEST_DATA, toUserSession(requests)).apply()
     }
 
     private fun getDataRequestPersisted() {
+        requests.clear()
         val requestList = sharedPreferences.getString(REQUEST_DATA, null)
         requestList?.let {
-            requests.addAll(it.toRequestSession())
+            requests.addAll(
+                fromUserSession(it)
+            )
         }
     }
 
@@ -50,5 +79,44 @@ class RequestDataSourceImpl(
 
     private fun String.toRequestSession(): List<RequestDTO> {
         return fromJson()
+    }
+
+    private fun applyFilters(
+        registrationCollaborator: String,
+        status: FilterRequestStatus
+    ): List<RequestDTO> {
+        if (registrationCollaborator.isNotEmpty() && status.name != FilterRequestStatus.ALL.name) {
+            return requests.filter {
+                it.collaborator.registration == registrationCollaborator && it.status == requestStatus(
+                    status
+                )
+            }
+        } else if (registrationCollaborator.isNotEmpty() && status.name == FilterRequestStatus.ALL.name) {
+            return requests.filter {
+                it.collaborator.registration == registrationCollaborator
+            }
+        } else if (registrationCollaborator.isNullOrEmpty() && status.name != FilterRequestStatus.ALL.name) {
+            return requests.filter {
+                it.status == requestStatus(
+                    status
+                )
+            }
+        }
+        return requests
+    }
+
+    private fun requestStatus(status: FilterRequestStatus): String {
+        if (status.name == FilterRequestStatus.PENDING.name) {
+            return RequestStatus.PENDING.name
+        }
+        return RequestStatus.RELEASED.name
+    }
+
+    private fun fromUserSession(json: String): List<RequestDTO> {
+        return gson.convertJson<List<RequestDTO>>(json)
+    }
+
+    private fun toUserSession(requestsDTO: List<RequestDTO>): String {
+        return gson.toJson(requestsDTO)
     }
 }
