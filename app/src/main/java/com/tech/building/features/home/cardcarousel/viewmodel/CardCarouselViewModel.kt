@@ -1,4 +1,4 @@
-package com.tech.building.features.cardcarousel.viewmodel
+package com.tech.building.features.home.cardcarousel.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

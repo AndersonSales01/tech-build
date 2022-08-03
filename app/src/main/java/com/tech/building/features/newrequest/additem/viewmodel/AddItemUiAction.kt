@@ -1,4 +1,4 @@
-package com.tech.building.features.additem.viewmodel
+package com.tech.building.features.newrequest.additem.viewmodel
 
 import com.tech.building.domain.model.ItemRequestModel
 

@@ -1,4 +1,4 @@
-package com.tech.building.features.additem.view
+package com.tech.building.features.newrequest.additem.view
 
 import android.content.Context
 import android.content.Intent
@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tech.building.R
 import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.MaterialModel
-import com.tech.building.features.additem.viewmodel.AddItemUiAction
-import com.tech.building.features.additem.viewmodel.AddItemViewModel
+import com.tech.building.features.newrequest.additem.viewmodel.AddItemUiAction
+import com.tech.building.features.newrequest.additem.viewmodel.AddItemViewModel
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_add_item.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

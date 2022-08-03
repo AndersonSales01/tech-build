@@ -1,4 +1,4 @@
-package com.tech.building.features.cardcarousel.viewmodel
+package com.tech.building.features.home.cardcarousel.viewmodel
 
 import com.tech.building.domain.model.CardCarouselModel
 

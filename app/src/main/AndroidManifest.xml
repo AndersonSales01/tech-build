@@ -33,7 +33,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".features.additem.view.AddItemActivity"
+            android:name=".features.newrequest.additem.view.AddItemActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

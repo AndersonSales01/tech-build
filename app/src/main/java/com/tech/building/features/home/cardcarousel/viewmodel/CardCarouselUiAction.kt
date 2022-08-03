@@ -1,4 +1,4 @@
-package com.tech.building.features.cardcarousel.viewmodel
+package com.tech.building.features.home.cardcarousel.viewmodel
 
 sealed class CardCarouselUiAction {
     object NavigateToNewRequest : CardCarouselUiAction()

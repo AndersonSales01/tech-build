@@ -1,4 +1,4 @@
-package com.tech.building.features.cardcarousel.view
+package com.tech.building.features.home.cardcarousel.view
 
 import android.view.LayoutInflater
 import android.view.View

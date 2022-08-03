@@ -1,4 +1,4 @@
-package com.tech.building.features.cardcarousel.view
+package com.tech.building.features.home.cardcarousel.view
 
 import android.os.Bundle
 import android.view.View
@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tech.building.R
 import com.tech.building.domain.model.CardCarouselModel
-import com.tech.building.features.cardcarousel.viewmodel.CardCarouselUiAction
-import com.tech.building.features.cardcarousel.viewmodel.CardCarouselViewModel
+import com.tech.building.features.home.cardcarousel.viewmodel.CardCarouselUiAction
+import com.tech.building.features.home.cardcarousel.viewmodel.CardCarouselViewModel
 import com.tech.building.features.newrequest.view.NewRequestActivity
 import com.tech.building.features.releaserequest.requestslist.view.RequestListActivity
 import kotlinx.android.synthetic.main.fragment_card_carousel.*

@@ -1,4 +1,4 @@
-package com.tech.building.features.additem.viewmodel
+package com.tech.building.features.newrequest.additem.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import com.tech.building.R
 import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.MaterialModel
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
-import com.tech.building.features.additem.view.AddItemActivity
+import com.tech.building.features.newrequest.additem.view.AddItemActivity
 import com.tech.building.features.utils.provider.ResourceProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

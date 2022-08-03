@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tech.building.R
-import com.tech.building.features.cardcarousel.view.CardCarouselFragment
+import com.tech.building.features.home.cardcarousel.view.CardCarouselFragment
 
 class HomeActivity : AppCompatActivity(R.layout.activity_home) {
 

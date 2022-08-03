@@ -11,7 +11,7 @@ import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.model.RequestStatus
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import com.tech.building.domain.usecase.request.SaveNewRequestUseCase
-import com.tech.building.features.additem.view.AddItemActivity
+import com.tech.building.features.newrequest.additem.view.AddItemActivity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*

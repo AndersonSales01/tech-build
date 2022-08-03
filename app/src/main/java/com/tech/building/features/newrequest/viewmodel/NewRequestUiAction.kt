@@ -1,7 +1,7 @@
 package com.tech.building.features.newrequest.viewmodel
 
 import com.tech.building.domain.model.ItemRequestModel
-import com.tech.building.features.additem.view.AddItemActivity
+import com.tech.building.features.newrequest.additem.view.AddItemActivity
 
 sealed class NewRequestUiAction {
     data class OpeBottomSheetWithItemSelected(

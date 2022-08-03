@@ -1,4 +1,4 @@
-package com.tech.building.features.additem.view
+package com.tech.building.features.newrequest.additem.view
 
 import android.content.Context
 import android.view.LayoutInflater

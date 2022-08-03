@@ -1,7 +1,7 @@
 package com.tech.building.features.di
 
-import com.tech.building.features.additem.viewmodel.AddItemViewModel
-import com.tech.building.features.cardcarousel.viewmodel.CardCarouselViewModel
+import com.tech.building.features.newrequest.additem.viewmodel.AddItemViewModel
+import com.tech.building.features.home.cardcarousel.viewmodel.CardCarouselViewModel
 import com.tech.building.features.login.viewmodel.LoginViewModel
 import com.tech.building.features.newrequest.viewmodel.NewRequestViewModel
 import com.tech.building.features.releaserequest.releaserequest.viewmodel.ReleaseRequestViewModel
