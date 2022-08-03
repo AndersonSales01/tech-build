@@ -3,6 +3,7 @@ package com.tech.building.features.releaserequest.requestslist.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.tech.building.R
@@ -13,6 +14,7 @@ import com.tech.building.features.releaserequest.releaserequest.view.ReleaseRequ
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListUiAction
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListViewModel
 import kotlinx.android.synthetic.main.activity_list_request.*
+import kotlinx.android.synthetic.main.activity_release_request.*
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -31,6 +33,19 @@ class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
         setupViews()
         setStateObserver()
         setActionObserver()
+        setupToolbar()
+    }
+
+    private fun setupToolbar() {
+        toolAppBarRequestList.setNavigationOnClickListener {
+            onBackPressed()
+            finish()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("onResume", "Entrou")
         listViewModel.getCollaborators()
         listViewModel.onFilterRequestWithStatusChecked(statusChecked)
     }

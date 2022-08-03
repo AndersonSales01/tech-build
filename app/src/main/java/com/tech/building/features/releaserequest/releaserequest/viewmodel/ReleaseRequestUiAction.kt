@@ -6,4 +6,6 @@ sealed class ReleaseRequestUiAction {
     data class OpenReleaseMaterialScreen(
         val arg: ReleaseRequestedMaterialActivity.Args
     ) : ReleaseRequestUiAction()
+
+    object CloseScreen : ReleaseRequestUiAction()
 }

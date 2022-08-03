@@ -11,4 +11,5 @@ interface RequestRepository {
         registrationCollaborator: String,
         filter: FilterRequestStatus
     ): Flow<List<RequestModel>>
+    fun releaseRequest(requestModel: RequestModel): Flow<Unit>
 }

@@ -8,6 +8,7 @@ import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.model.RequestStatus
 import com.tech.building.gateway.request.entity.RequestDTO
 import com.tech.building.gateway.request.mapper.ListRequestDtoToListRequestModelMapper
+import com.tech.building.gateway.request.mapper.RequestModelToRequestDtoMapper
 import com.tech.building.gateway.util.convertJson
 import com.tech.building.gateway.util.fromJson
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +18,8 @@ const val REQUEST_DATA = "request_data"
 
 class RequestDataSourceImpl(
     private val sharedPreferences: SharedPreferences,
-    private val mapper: ListRequestDtoToListRequestModelMapper,
+    private val listRequestDtoToListRequestMapper: ListRequestDtoToListRequestModelMapper,
+    private val requestModelToRequestDtoMapper: RequestModelToRequestDtoMapper,
     private val gson: Gson
 ) : RequestDataSource {
     private var requests = mutableListOf<RequestDTO>()
@@ -47,7 +49,7 @@ class RequestDataSourceImpl(
         return flow {
             if (requests.isNotEmpty()) {
                 emit(
-                    mapper.map(
+                    listRequestDtoToListRequestMapper.map(
                         applyFilters(
                             registrationCollaborator = registrationCollaborator,
                             status = filter
@@ -111,6 +113,29 @@ class RequestDataSourceImpl(
         }
         return RequestStatus.RELEASED.name
     }
+
+    override fun releaseRequest(requestModel: RequestModel): Flow<Unit> {
+        return flow {
+            requestModel.status = RequestStatus.RELEASED
+            updateRequest(requestDTO = requestModelToRequestDtoMapper.map(requestModel))
+            emit(Unit)
+        }
+    }
+
+    private fun updateRequest(requestDTO: RequestDTO) {
+        getDataRequestPersisted()
+        requests?.let {
+            it.forEach { dto ->
+                if (dto.id == requestDTO.id) {
+                    requests[requests.indexOf(dto)] = requestDTO
+                    persistNewRequest()
+                }
+            }
+        }
+
+
+    }
+
 
     private fun fromUserSession(json: String): List<RequestDTO> {
         return gson.convertJson<List<RequestDTO>>(json)

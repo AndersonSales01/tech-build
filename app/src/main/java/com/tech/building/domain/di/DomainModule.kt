@@ -6,6 +6,7 @@ import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import com.tech.building.domain.usecase.login.LoginUseCase
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
 import com.tech.building.domain.usecase.request.GetRequestsByFilterUseCase
+import com.tech.building.domain.usecase.request.ReleaseRequestUseCase
 import com.tech.building.domain.usecase.request.SaveNewRequestUseCase
 import org.koin.dsl.module
 
@@ -48,6 +49,12 @@ val domainModule = module {
 
     factory {
         GetRequestsByFilterUseCase(
+            repository = get()
+        )
+    }
+
+    factory {
+        ReleaseRequestUseCase(
             repository = get()
         )
     }

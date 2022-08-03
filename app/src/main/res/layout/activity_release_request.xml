@@ -73,12 +73,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/sendRequestButton"
+            android:id="@+id/releaseRequestButton"
             style="@style/ButtonStyle"
             android:layout_marginHorizontal="@dimen/margin_horizontal_views_screen"
             android:layout_marginBottom="@dimen/margin_24"
             android:background="@drawable/shape_button_border_radius"
-            android:text="Enviar Requisição"
+            android:text="Liberar Requisição"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

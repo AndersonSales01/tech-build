@@ -8,13 +8,13 @@
     tools:context=".features.releaserequest.requestslist.view.RequestListActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/toolbarRelease"
+        android:id="@+id/toolbarRequestList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBarRelease"
+            android:id="@+id/toolAppBarRequestList"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -30,7 +30,7 @@
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarRelease">
+        app:layout_constraintTop_toBottomOf="@id/toolbarRequestList">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

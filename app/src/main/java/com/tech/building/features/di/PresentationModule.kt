@@ -61,7 +61,9 @@ val presentationModule = module {
     }
 
     viewModel {
-        ReleaseRequestViewModel()
+        ReleaseRequestViewModel(
+            releaseRequestUseCase = get()
+        )
     }
 
     viewModel {

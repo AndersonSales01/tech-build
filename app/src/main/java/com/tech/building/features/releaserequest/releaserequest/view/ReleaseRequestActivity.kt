@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tech.building.R
 import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.RequestModel
+import com.tech.building.features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity
 import com.tech.building.features.releaserequest.releaserequest.viewmodel.ReleaseRequestUiAction
 import com.tech.building.features.releaserequest.releaserequest.viewmodel.ReleaseRequestViewModel
-import com.tech.building.features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_release_request.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,7 +39,24 @@ class ReleaseRequestActivity : AppCompatActivity(R.layout.activity_release_reque
         super.onCreate(savedInstanceState)
         setStateObserver()
         setActionObserver()
+        setupListener()
+        setupToolbar()
         viewModel.setupViews(data)
+
+    }
+
+
+    private fun setupToolbar() {
+        topAppBar.setNavigationOnClickListener {
+            onBackPressed()
+            finish()
+        }
+    }
+
+    private fun setupListener() {
+        releaseRequestButton.setOnClickListener {
+            viewModel.releaseRequestButtonClicked()
+        }
     }
 
     private fun setStateObserver() {
@@ -57,6 +74,9 @@ class ReleaseRequestActivity : AppCompatActivity(R.layout.activity_release_reque
             when (action) {
                 is ReleaseRequestUiAction.OpenReleaseMaterialScreen -> {
                     openReleaseMaterialScreen(action.arg)
+                }
+                is ReleaseRequestUiAction.CloseScreen -> {
+                    finish()
                 }
             }
         }

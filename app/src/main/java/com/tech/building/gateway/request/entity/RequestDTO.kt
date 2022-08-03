@@ -7,5 +7,5 @@ data class RequestDTO(
     val id: Int,
     val collaborator: CollaboratorModel,
     val itemsRequest: List<ItemRequestModel>,
-    val status: String
+    var status: String
 )

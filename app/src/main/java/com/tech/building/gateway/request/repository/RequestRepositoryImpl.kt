@@ -22,4 +22,8 @@ class RequestRepositoryImpl(
             filter = filter
         )
     }
+
+    override fun releaseRequest(requestModel: RequestModel): Flow<Unit> {
+        return dataSource.releaseRequest(requestModel)
+    }
 }

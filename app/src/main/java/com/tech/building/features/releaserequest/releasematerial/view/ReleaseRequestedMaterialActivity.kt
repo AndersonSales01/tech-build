@@ -33,7 +33,15 @@ class ReleaseRequestedMaterialActivity : AppCompatActivity(R.layout.activity_rel
         setStateObserver()
         setActionObserver()
         setupListener()
+        setupToolbar()
         viewmodel.setupViews(data)
+    }
+
+    private fun setupToolbar() {
+        toolAppBar.setNavigationOnClickListener {
+            onBackPressed()
+            finish()
+        }
     }
 
     private fun setupListener() {

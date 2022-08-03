@@ -8,5 +8,5 @@ data class RequestModel(
     val id: Int = 0,
     val collaborator: CollaboratorModel,
     val itemsRequest: List<ItemRequestModel>,
-    val status: RequestStatus
+    var status: RequestStatus
 ) : Parcelable
