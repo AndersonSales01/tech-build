@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.tech.building.R
@@ -13,10 +14,13 @@ import com.tech.building.features.newrequest.view.CollaborateArrayAdapter
 import com.tech.building.features.releaserequest.releaserequest.view.ReleaseRequestActivity
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListUiAction
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListViewModel
+import com.tech.building.features.scanqrcodecollaborate.view.QrcodeScanCollaborateActivity
 import kotlinx.android.synthetic.main.activity_list_request.*
-import kotlinx.android.synthetic.main.activity_release_request.*
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+private const val RESULT_CODE_COLLABORATOR_SCANNED = 2001
+private const val COLLABORATOR_SCANNED_KEY = "collaboratorScanned"
 
 class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
 
@@ -34,6 +38,14 @@ class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
         setStateObserver()
         setActionObserver()
         setupToolbar()
+        setupListener()
+    }
+
+    private fun setupListener() {
+        qrcodeScanCollaborator.setOnClickListener {
+            val intent = Intent(this, QrcodeScanCollaborateActivity::class.java)
+            activityForResult.launch(intent)
+        }
     }
 
     private fun setupToolbar() {
@@ -70,6 +82,22 @@ class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
             when (action) {
                 is RequestListUiAction.OpenReleaseRequestScreen -> openReleaseRequestScreen(action.request)
             }
+        }
+    }
+
+
+    private val activityForResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        when (result.resultCode) {
+            RESULT_CODE_COLLABORATOR_SCANNED -> {
+                val collaborator: CollaboratorModel? =
+                    result.data?.extras?.getParcelable(COLLABORATOR_SCANNED_KEY)
+                collaborator?.let {
+                    collaboratorSelected(collaborator)
+                }
+            }
+
         }
     }
 

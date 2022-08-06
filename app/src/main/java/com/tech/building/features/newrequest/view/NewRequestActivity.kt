@@ -54,7 +54,7 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
         }
         qrcodeScan.setOnClickListener {
             val intent = Intent(this, QrcodeScanCollaborateActivity::class.java)
-            itemAddedForResult.launch(intent)
+            activityForResult.launch(intent)
         }
         sendRequestButton.setOnClickListener {
             viewModel.sendRequest()
@@ -66,10 +66,10 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
             context = this,
             args = args
         )
-        itemAddedForResult.launch(intent)
+        activityForResult.launch(intent)
     }
 
-    private val itemAddedForResult = registerForActivityResult(
+    private val activityForResult = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         when (result.resultCode) {
