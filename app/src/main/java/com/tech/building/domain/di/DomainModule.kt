@@ -7,7 +7,7 @@ import com.tech.building.domain.usecase.login.LoginUseCase
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
 import com.tech.building.domain.usecase.request.GetRequestsByFilterUseCase
 import com.tech.building.domain.usecase.request.ReleaseRequestUseCase
-import com.tech.building.domain.usecase.request.SaveNewRequestUseCase
+import com.tech.building.domain.usecase.request.SendRequestUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -42,7 +42,7 @@ val domainModule = module {
     }
 
     factory {
-        SaveNewRequestUseCase(
+        SendRequestUseCase(
             repository = get()
         )
     }

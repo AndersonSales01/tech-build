@@ -4,10 +4,10 @@ import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.repository.RequestRepository
 import kotlinx.coroutines.flow.Flow
 
-class SaveNewRequestUseCase(
+class SendRequestUseCase(
     private val repository: RequestRepository
 ) {
 
     operator fun invoke(requestModel: RequestModel): Flow<Unit> =
-        repository.saveNewRequest(requestModel)
+        repository.sendRequest(requestModel)
 }

@@ -24,7 +24,7 @@ class RequestDataSourceImpl(
 ) : RequestDataSource {
     private var requests = mutableListOf<RequestDTO>()
 
-    override fun saveNewRequest(requestModel: RequestModel): Flow<Unit> {
+    private fun saveNewRequest(requestModel: RequestModel) {
         requests.clear()
         getDataRequestPersisted()
         val requestDTO = RequestDTO(
@@ -34,9 +34,12 @@ class RequestDataSourceImpl(
             status = requestModel.status.name
         )
         requests.add(requestDTO)
-        Log.d("saveNewRequest", "value" + requests.size)
         persistNewRequest()
+    }
+
+    override fun sendRequest(requestModel: RequestModel): Flow<Unit> {
         return flow {
+            saveNewRequest(requestModel)
             emit(Unit)
         }
     }

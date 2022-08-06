@@ -10,7 +10,7 @@ import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.model.RequestStatus
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
-import com.tech.building.domain.usecase.request.SaveNewRequestUseCase
+import com.tech.building.domain.usecase.request.SendRequestUseCase
 import com.tech.building.features.newrequest.additem.view.AddItemActivity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class NewRequestViewModel(
     private val getCollaboratorsUseCase: GetCollaboratorsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val saveNewRequestUseCase: SaveNewRequestUseCase,
+    private val sendRequestUseCase: SendRequestUseCase,
 ) : ViewModel() {
 
     private val stateMutableLiveData: MutableLiveData<NewRequestUiState> = MutableLiveData()
@@ -40,12 +40,12 @@ class NewRequestViewModel(
                 .onCompletion {}
                 .catch { getCollaboratorsHandleError() }
                 .collect {
-                    saveNewRequestHandleSuccess(it)
+                    sendRequestHandleSuccess(it)
                 }
         }
     }
 
-    private fun saveNewRequestHandleSuccess(collaborators: List<CollaboratorModel>) {
+    private fun sendRequestHandleSuccess(collaborators: List<CollaboratorModel>) {
         if (collaborators.isNotEmpty()) {
             stateMutableLiveData.value = NewRequestUiState(collaborators = collaborators)
         }
@@ -110,7 +110,7 @@ class NewRequestViewModel(
                     itemsRequest = items
                 )
 
-                saveNewRequest(requestModel)
+                sendRequest(requestModel)
                 Log.d("sendRequest", "Colaborador: " + requestModel.collaborator.name)
                 Log.d("sendRequest", "Status: " + requestModel.status.name)
                 Log.d("sendRequest", "Items: " + requestModel.itemsRequest.size)
@@ -144,20 +144,20 @@ class NewRequestViewModel(
         actionMutableLiveData.value = NewRequestUiAction.OpenAddItemScreen(args)
     }
 
-    private fun saveNewRequest(requestModel: RequestModel) {
+    private fun sendRequest(requestModel: RequestModel) {
         viewModelScope.launch {
-            saveNewRequestUseCase.invoke(requestModel)
+            sendRequestUseCase.invoke(requestModel)
                 .flowOn(dispatcher)
                 .onStart { }
                 .onCompletion {}
                 .collect {
-                    saveNewRequestHandleSuccess()
+                    sendRequestHandleSuccess()
                 }
         }
 
     }
 
-    private fun saveNewRequestHandleSuccess() {
+    private fun sendRequestHandleSuccess() {
         actionMutableLiveData.value = NewRequestUiAction.SendRequestSuccess
         Log.d("saveNewRequest", "Sucess: ")
     }

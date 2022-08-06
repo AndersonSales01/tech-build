@@ -5,7 +5,7 @@ import com.tech.building.domain.model.RequestModel
 import kotlinx.coroutines.flow.Flow
 
 interface RequestDataSource {
-    fun saveNewRequest(requestModel: RequestModel): Flow<Unit>
+    fun sendRequest(requestModel: RequestModel): Flow<Unit>
     fun getRequestsFiltered(
         registrationCollaborator: String,
         filter: FilterRequestStatus

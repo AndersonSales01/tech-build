@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 class RequestRepositoryImpl(
     private val dataSource: RequestDataSource
 ) : RequestRepository {
-    override fun saveNewRequest(requestModel: RequestModel): Flow<Unit> {
-        return dataSource.saveNewRequest(requestModel)
+    override fun sendRequest(requestModel: RequestModel): Flow<Unit> {
+        return dataSource.sendRequest(requestModel)
     }
 
     override fun getRequestsFiltered(
