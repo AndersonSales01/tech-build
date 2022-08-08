@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CollaboratorDataSource {
     fun getCollaborators(): Flow<List<CollaboratorModel>>
+    fun getCollaboratorWithQrcode(registration: String): Flow<CollaboratorModel?>
 }

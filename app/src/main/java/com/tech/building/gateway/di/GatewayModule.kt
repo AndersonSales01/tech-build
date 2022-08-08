@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.tech.building.domain.repository.*
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSource
 import com.tech.building.gateway.collaborator.datasource.CollaboratorDataSourceImpl
+import com.tech.building.gateway.collaborator.mapper.CollaboratorDtoToCollaboratorModelMapper
 import com.tech.building.gateway.collaborator.mapper.ListCollaboratorDtoToListCollaboratorModelMapper
 import com.tech.building.gateway.collaborator.repository.CollaboratorRepositoryImpl
 import com.tech.building.gateway.login.datasource.LoginDataSource
@@ -80,7 +81,8 @@ val gatewayModule = module {
 
     factory<CollaboratorDataSource> {
         CollaboratorDataSourceImpl(
-            mapper = ListCollaboratorDtoToListCollaboratorModelMapper()
+            mapper = ListCollaboratorDtoToListCollaboratorModelMapper(),
+            collaboratorDtoToCollaboratorModelMapper = CollaboratorDtoToCollaboratorModelMapper()
         )
     }
 

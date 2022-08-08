@@ -16,8 +16,8 @@ object MocksData {
     fun mockListLogin(): List<UserDTO> =
         listOf(
             UserDTO(
-                user = "teste1",
-                password = "123456",
+                user = "admin",
+                password = "admin",
                 name = "João Paulo",
                 email = "teste@gmail.com",
                 phone = "8888-88888",
@@ -25,8 +25,8 @@ object MocksData {
                 permissions = listOf("new_request", "release_request")
             ),
             UserDTO(
-                user = "teste2",
-                password = "123456",
+                user = "engenheiro",
+                password = "123",
                 name = "teste2",
                 email = "teste1@gmail.com",
                 phone = "9999-9999",
@@ -34,8 +34,8 @@ object MocksData {
                 permissions = listOf("new_request")
             ),
             UserDTO(
-                user = "teste3",
-                password = "123456",
+                user = "almo",
+                password = "123",
                 name = "teste2",
                 email = "teste1@gmail.com",
                 phone = "9999-9999",

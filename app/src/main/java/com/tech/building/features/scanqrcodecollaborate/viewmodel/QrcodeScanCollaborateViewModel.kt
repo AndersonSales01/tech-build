@@ -3,14 +3,13 @@ package com.tech.building.features.scanqrcodecollaborate.viewmodel
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tech.building.domain.model.CollaboratorModel
-import com.tech.building.domain.usecase.collaborator.CheckCollaboratorValidUseCase
+import com.tech.building.domain.usecase.collaborator.GetCollaboratorWithQrcodeUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -20,7 +19,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class QrcodeScanCollaborateViewModel(
-    private val checkCollaboratorValidUseCase: CheckCollaboratorValidUseCase,
+    private val getCollaboratorWithQrcodeUseCase: GetCollaboratorWithQrcodeUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) : ViewModel() {
 
@@ -56,23 +55,23 @@ class QrcodeScanCollaborateViewModel(
 
     fun qrCodeScannerValue(value: String) {
         if (value.isNotEmpty()) {
-            checkCollaboratorValid(value)
+            getCollaboratorWithQrcode(value)
         }
     }
 
-    private fun checkCollaboratorValid(idRegistration: String) {
+    private fun getCollaboratorWithQrcode(idRegistration: String) {
         viewModelScope.launch {
-            checkCollaboratorValidUseCase.invoke(idRegistration)
+            getCollaboratorWithQrcodeUseCase.invoke(idRegistration)
                 .flowOn(dispatcher)
                 .onStart { }
                 .onCompletion {}
                 .collect {
-                    checkCollaboratorValidHandleSuccess(it)
+                    getCollaboratorWithQrcodeHandleSuccess(it)
                 }
         }
     }
 
-    private fun checkCollaboratorValidHandleSuccess(collaborator: CollaboratorModel?) {
+    private fun     getCollaboratorWithQrcodeHandleSuccess(collaborator: CollaboratorModel?) {
         if (collaborator != null) {
             actionMutableLiveData.value =
                 QrcodeScanCollaborateUiAction.ScanSuccess(collaborator = collaborator)

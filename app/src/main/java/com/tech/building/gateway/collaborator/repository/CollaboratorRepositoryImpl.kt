@@ -10,4 +10,8 @@ class CollaboratorRepositoryImpl(
 ) : CollaboratorRepository {
     override fun getCollaborators(): Flow<List<CollaboratorModel>> =
         dataSource.getCollaborators()
+
+    override fun getCollaboratorWithQrcode(registration: String): Flow<CollaboratorModel?> {
+        return dataSource.getCollaboratorWithQrcode(registration)
+    }
 }

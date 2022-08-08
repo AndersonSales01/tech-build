@@ -49,7 +49,7 @@ val presentationModule = module {
 
     viewModel {
         QrcodeScanCollaborateViewModel(
-            checkCollaboratorValidUseCase = get()
+            getCollaboratorWithQrcodeUseCase = get()
         )
     }
 

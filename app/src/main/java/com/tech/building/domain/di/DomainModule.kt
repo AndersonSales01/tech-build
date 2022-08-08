@@ -1,7 +1,7 @@
 package com.tech.building.domain.di
 
 import com.tech.building.domain.usecase.cardcarousel.GetCardsCarouselHasPermissionUseCase
-import com.tech.building.domain.usecase.collaborator.CheckCollaboratorValidUseCase
+import com.tech.building.domain.usecase.collaborator.GetCollaboratorWithQrcodeUseCase
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import com.tech.building.domain.usecase.login.LoginUseCase
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
@@ -30,7 +30,7 @@ val domainModule = module {
     }
 
     factory {
-        CheckCollaboratorValidUseCase(
+        GetCollaboratorWithQrcodeUseCase(
             repository = get()
         )
     }
