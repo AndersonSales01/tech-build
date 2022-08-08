@@ -4,19 +4,19 @@
 ## Usuários:
 **Administrador:**
 
-user: admin
+```user: admin```
 
-password: 123
+```password: 123```
 
 **Engenheiro:**
 
-user: engenheiro
+```user: engenheiro```
 
-password: 123
+```password: 123```
 
 **Almoxarifado:**
 
-user: almo
+```user: almo```
 
-password: 123
+```password: 123```
 
