@@ -8,7 +8,6 @@ import com.tech.building.R
 import com.tech.building.features.home.HomeActivity
 import com.tech.building.features.login.viewmodel.LoginUiAction
 import com.tech.building.features.login.viewmodel.LoginViewModel
-import com.tech.building.features.utils.provider.NetWorkErrorPage
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -54,7 +53,6 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         viewModel.loginUiActionLiveData.observe(this) { action ->
             when (action) {
                 is LoginUiAction.NavigateToHome -> navigateToHome()
-                is LoginUiAction.ShowNetWorkErrorPage -> showNetWorkErrorPage()
             }
         }
     }
@@ -75,17 +73,5 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private fun navigateToHome() {
         startActivity(HomeActivity.newIntent(this))
         finish()
-    }
-
-    private fun showNetWorkErrorPage() {
-        val args = NetWorkErrorPage.Args(
-            onTryAgain = {
-                viewModel.efetuateLogin(
-                    user = edtUser.text.toString(),
-                    password = edtPassword.text.toString()
-                )
-            }
-        )
-        NetWorkErrorPage(args).show(supportFragmentManager, this::class.java.name)
     }
 }

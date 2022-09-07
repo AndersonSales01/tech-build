@@ -12,7 +12,6 @@ import com.tech.building.domain.model.RequestModel
 import com.tech.building.features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity
 import com.tech.building.features.releaserequest.releaserequest.viewmodel.ReleaseRequestUiAction
 import com.tech.building.features.releaserequest.releaserequest.viewmodel.ReleaseRequestViewModel
-import com.tech.building.features.utils.provider.NetWorkErrorPage
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.activity_release_request.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -79,9 +78,6 @@ class ReleaseRequestActivity : AppCompatActivity(R.layout.activity_release_reque
                 is ReleaseRequestUiAction.CloseScreen -> {
                     finish()
                 }
-                is ReleaseRequestUiAction.ShowNetWorkErrorPage -> {
-                    showNetWorkErrorPage()
-                }
             }
         }
     }
@@ -111,14 +107,6 @@ class ReleaseRequestActivity : AppCompatActivity(R.layout.activity_release_reque
             }
         }
     }
-
-    private fun showNetWorkErrorPage() {
-        val args = NetWorkErrorPage.Args(
-            onTryAgain = { viewModel.releaseRequestButtonClicked() }
-        )
-        NetWorkErrorPage(args).show(supportFragmentManager, this::class.java.name)
-    }
-
 
     companion object {
         fun newInstance(args: Args?, context: Context): Intent {

@@ -10,7 +10,6 @@ import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.model.RequestStatus
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
-import com.tech.building.domain.usecase.network.HasInternetConnectionUseCase
 import com.tech.building.domain.usecase.request.SendRequestUseCase
 import com.tech.building.features.newrequest.additem.view.AddItemActivity
 import kotlinx.coroutines.CoroutineDispatcher
@@ -22,7 +21,6 @@ class NewRequestViewModel(
     private val getCollaboratorsUseCase: GetCollaboratorsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val sendRequestUseCase: SendRequestUseCase,
-    private val hasInternetConnectionUseCase: HasInternetConnectionUseCase
 ) : ViewModel() {
 
     private val stateMutableLiveData: MutableLiveData<NewRequestUiState> = MutableLiveData()
@@ -147,19 +145,16 @@ class NewRequestViewModel(
     }
 
     private fun sendRequest(requestModel: RequestModel) {
-        if (hasInternetConnectionUseCase.invoke()) {
-            viewModelScope.launch {
-                sendRequestUseCase.invoke(requestModel)
-                    .flowOn(dispatcher)
-                    .onStart { }
-                    .onCompletion {}
-                    .collect {
-                        sendRequestHandleSuccess()
-                    }
-            }
-        } else {
-            actionMutableLiveData.value = NewRequestUiAction.ShowNetWorkErrorPage
+        viewModelScope.launch {
+            sendRequestUseCase.invoke(requestModel)
+                .flowOn(dispatcher)
+                .onStart { }
+                .onCompletion {}
+                .collect {
+                    sendRequestHandleSuccess()
+                }
         }
+
     }
 
     private fun sendRequestHandleSuccess() {

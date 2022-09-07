@@ -5,7 +5,6 @@ import com.tech.building.domain.usecase.collaborator.GetCollaboratorWithQrcodeUs
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
 import com.tech.building.domain.usecase.login.LoginUseCase
 import com.tech.building.domain.usecase.material.GetMaterialsUseCase
-import com.tech.building.domain.usecase.network.HasInternetConnectionUseCase
 import com.tech.building.domain.usecase.request.GetRequestsByFilterUseCase
 import com.tech.building.domain.usecase.request.ReleaseRequestUseCase
 import com.tech.building.domain.usecase.request.SendRequestUseCase
@@ -57,12 +56,6 @@ val domainModule = module {
     factory {
         ReleaseRequestUseCase(
             repository = get()
-        )
-    }
-
-    factory {
-        HasInternetConnectionUseCase(
-            networkConnectionInfo = get()
         )
     }
 }

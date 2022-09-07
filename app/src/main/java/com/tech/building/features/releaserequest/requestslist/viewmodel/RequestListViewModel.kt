@@ -10,7 +10,6 @@ import com.tech.building.domain.model.CollaboratorModel
 import com.tech.building.domain.model.FilterRequestStatus
 import com.tech.building.domain.model.RequestModel
 import com.tech.building.domain.usecase.collaborator.GetCollaboratorsUseCase
-import com.tech.building.domain.usecase.network.HasInternetConnectionUseCase
 import com.tech.building.domain.usecase.request.GetRequestsByFilterUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +20,6 @@ class RequestListViewModel(
     private val getCollaboratorsUseCase: GetCollaboratorsUseCase,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val getRequestsByFilterUseCase: GetRequestsByFilterUseCase,
-    private val hasInternetConnectionUseCase: HasInternetConnectionUseCase
 ) : ViewModel() {
 
     private val _uiStateFLow = MutableStateFlow(RequestListUiState())
@@ -76,22 +74,18 @@ class RequestListViewModel(
     }
 
     fun onFilterRequestWithStatusChecked(idRadioButton: Int) {
-        if (hasInternetConnectionUseCase.invoke()) {
-            collaboratorSelected?.let {
-                getRequestsByFilter(
-                    status = checkRequestStatusForFilter(idRadioButton),
-                    registrationCollaborator = it.registration
-                )
-            } ?: run {
-                getRequestsByFilter(
-                    status = checkRequestStatusForFilter(idRadioButton)
-                )
-            }
-            Log.d("RequestStatus", "value: " + checkRequestStatusForFilter(idRadioButton))
-
-        } else {
-            actionMutableLiveDataList.value = RequestListUiAction.ShowNetWorkErrorPage
+        collaboratorSelected?.let {
+            getRequestsByFilter(
+                status = checkRequestStatusForFilter(idRadioButton),
+                registrationCollaborator = it.registration
+            )
+        } ?: run {
+            getRequestsByFilter(
+                status = checkRequestStatusForFilter(idRadioButton)
+            )
         }
+
+        Log.d("RequestStatus", "value: " + checkRequestStatusForFilter(idRadioButton))
     }
 
     private fun checkRequestStatusForFilter(idRadioButton: Int): FilterRequestStatus {

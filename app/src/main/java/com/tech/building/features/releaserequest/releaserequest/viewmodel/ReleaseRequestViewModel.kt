@@ -7,10 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tech.building.domain.model.ItemRequestModel
 import com.tech.building.domain.model.RequestModel
-import com.tech.building.domain.usecase.network.HasInternetConnectionUseCase
 import com.tech.building.domain.usecase.request.ReleaseRequestUseCase
-import com.tech.building.features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity
 import com.tech.building.features.releaserequest.releaserequest.view.ReleaseRequestActivity
+import com.tech.building.features.releaserequest.releasematerial.view.ReleaseRequestedMaterialActivity
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -21,8 +20,7 @@ import kotlinx.coroutines.launch
 
 class ReleaseRequestViewModel(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val releaseRequestUseCase: ReleaseRequestUseCase,
-    private val hasInternetConnectionUseCase: HasInternetConnectionUseCase
+    private val releaseRequestUseCase: ReleaseRequestUseCase
 ) : ViewModel() {
 
     private val stateMutableLiveData: MutableLiveData<ReleaseRequestUiState> = MutableLiveData()
@@ -73,22 +71,18 @@ class ReleaseRequestViewModel(
     }
 
     private fun releaseRequest() {
-        if (hasInternetConnectionUseCase.invoke()) {
-            request?.let {
-                viewModelScope.launch {
-                    releaseRequestUseCase.invoke(
-                        requestModel = it
-                    )
-                        .flowOn(dispatcher)
-                        .onStart { }
-                        .onCompletion {}
-                        .collect {
-                            releaseRequestHandleSuccess()
-                        }
-                }
+        request?.let {
+            viewModelScope.launch {
+                releaseRequestUseCase.invoke(
+                    requestModel = it
+                )
+                    .flowOn(dispatcher)
+                    .onStart { }
+                    .onCompletion {}
+                    .collect {
+                        releaseRequestHandleSuccess()
+                    }
             }
-        } else {
-            actionMutableLiveData.value = ReleaseRequestUiAction.ShowNetWorkErrorPage
         }
     }
 

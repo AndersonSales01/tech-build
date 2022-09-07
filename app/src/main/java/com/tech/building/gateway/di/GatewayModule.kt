@@ -24,8 +24,6 @@ import com.tech.building.gateway.request.repository.RequestRepositoryImpl
 import com.tech.building.gateway.user.datasource.UserDataSource
 import com.tech.building.gateway.user.datasource.UserDataSourceImpl
 import com.tech.building.gateway.user.repository.UserRepositoryImpl
-import com.tech.building.gateway.util.NetworkConnectionInfo
-import com.tech.building.gateway.util.NetworkConnectionInfoImpl
 import org.koin.dsl.module
 
 const val USER_DATA = "user_session"
@@ -103,13 +101,6 @@ val gatewayModule = module {
             listRequestDtoToListRequestMapper = ListRequestDtoToListRequestModelMapper(),
             requestModelToRequestDtoMapper = RequestModelToRequestDtoMapper(),
             gson = Gson()
-        )
-    }
-
-    // Util
-    factory<NetworkConnectionInfo> {
-        NetworkConnectionInfoImpl(
-            context = get()
         )
     }
 }

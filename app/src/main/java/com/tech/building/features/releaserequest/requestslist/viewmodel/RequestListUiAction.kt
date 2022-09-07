@@ -6,6 +6,4 @@ sealed class RequestListUiAction {
     data class OpenReleaseRequestScreen(
         val request: RequestModel
     ) : RequestListUiAction()
-
-    object ShowNetWorkErrorPage : RequestListUiAction()
 }

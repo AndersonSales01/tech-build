@@ -15,7 +15,6 @@ import com.tech.building.features.releaserequest.releaserequest.view.ReleaseRequ
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListUiAction
 import com.tech.building.features.releaserequest.requestslist.viewmodel.RequestListViewModel
 import com.tech.building.features.scanqrcodecollaborate.view.QrcodeScanCollaborateActivity
-import com.tech.building.features.utils.provider.NetWorkErrorPage
 import kotlinx.android.synthetic.main.activity_list_request.*
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -82,7 +81,6 @@ class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
         listViewModel.actionLiveDataList.observe(this) { action ->
             when (action) {
                 is RequestListUiAction.OpenReleaseRequestScreen -> openReleaseRequestScreen(action.request)
-                is RequestListUiAction.ShowNetWorkErrorPage -> showNetWorkErrorPage()
             }
         }
     }
@@ -139,14 +137,6 @@ class RequestListActivity : AppCompatActivity(R.layout.activity_list_request) {
             request = request
         )
         startActivity(ReleaseRequestActivity.newInstance(args = args, context = this))
-    }
-
-    private fun showNetWorkErrorPage() {
-        val args = NetWorkErrorPage.Args(
-            onTryAgain = { listViewModel.onFilterRequestWithStatusChecked(statusChecked) },
-            onClosed = { finish() }
-        )
-        NetWorkErrorPage(args).show(supportFragmentManager, this::class.java.name)
     }
 
     companion object {
