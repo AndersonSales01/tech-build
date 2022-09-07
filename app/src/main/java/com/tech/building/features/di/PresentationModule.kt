@@ -23,7 +23,8 @@ val presentationModule = module {
 
     viewModel {
         LoginViewModel(
-            loginUseCase = get()
+            loginUseCase = get(),
+            hasInternetConnectionUseCase = get()
         )
     }
 
@@ -36,7 +37,8 @@ val presentationModule = module {
     viewModel {
         NewRequestViewModel(
             getCollaboratorsUseCase = get(),
-            sendRequestUseCase = get()
+            sendRequestUseCase = get(),
+            hasInternetConnectionUseCase = get()
         )
     }
 
@@ -56,13 +58,15 @@ val presentationModule = module {
     viewModel {
         RequestListViewModel(
             getCollaboratorsUseCase = get(),
-            getRequestsByFilterUseCase = get()
+            getRequestsByFilterUseCase = get(),
+            hasInternetConnectionUseCase = get()
         )
     }
 
     viewModel {
         ReleaseRequestViewModel(
-            releaseRequestUseCase = get()
+            releaseRequestUseCase = get(),
+            hasInternetConnectionUseCase = get()
         )
     }
 

@@ -8,4 +8,6 @@ sealed class ReleaseRequestUiAction {
     ) : ReleaseRequestUiAction()
 
     object CloseScreen : ReleaseRequestUiAction()
+
+    object ShowNetWorkErrorPage : ReleaseRequestUiAction()
 }

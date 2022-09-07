@@ -13,4 +13,6 @@ sealed class NewRequestUiAction {
     ) : NewRequestUiAction()
 
     object SendRequestSuccess : NewRequestUiAction()
+
+    object ShowNetWorkErrorPage : NewRequestUiAction()
 }
