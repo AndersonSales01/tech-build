@@ -6,7 +6,7 @@
 
 ```user: admin```
 
-```password: 123```
+```password: admin```
 
 **Engenheiro:**
 
