@@ -56,4 +56,10 @@
     <string name="release_material_screen_quantity_attended_label">Quantidade Atendida:</string>
     <string name="release_material_screen_quantity_attended_hint">Quantidade Atendida</string>
     <string name="release_material_screen_toolbar_tile">Material</string>
+
+    <!-- NetWork Page -->
+    <string name="network_page_title">Você está sem internet?</string>
+    <string name="network_page_subtitle">Identificamos que você está com problemas na sua rede, por favor verifique sua conexão.</string>
+    <string name="network_page_try_again_button">Tentar Novamente</string>
+    <string name="network_page_closed_button">Fechar</string>
 </resources>

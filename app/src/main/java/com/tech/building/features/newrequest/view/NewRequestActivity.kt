@@ -17,6 +17,7 @@ import com.tech.building.features.newrequest.additem.view.AddItemActivity.Compan
 import com.tech.building.features.newrequest.viewmodel.NewRequestUiAction
 import com.tech.building.features.newrequest.viewmodel.NewRequestViewModel
 import com.tech.building.features.scanqrcodecollaborate.view.QrcodeScanCollaborateActivity
+import com.tech.building.features.utils.provider.NetWorkErrorPage
 import kotlinx.android.synthetic.main.activity_new_request.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -120,6 +121,7 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
                 )
                 is NewRequestUiAction.OpenAddItemScreen -> openAddItemScreen(action.args)
                 is NewRequestUiAction.SendRequestSuccess -> finish()
+                is NewRequestUiAction.ShowNetWorkErrorPage -> showNetWorkErrorPage()
             }
         }
     }
@@ -170,6 +172,13 @@ class NewRequestActivity : AppCompatActivity(R.layout.activity_new_request) {
             Snackbar.LENGTH_LONG
         )
             .show()
+    }
+
+    private fun showNetWorkErrorPage() {
+        val args = NetWorkErrorPage.Args(
+            onTryAgain = { viewModel.sendRequest() },
+        )
+        NetWorkErrorPage(args).show(supportFragmentManager, this::class.java.name)
     }
 
     companion object {
